@@ -490,13 +490,13 @@
           h = date.getHours() + "",
           m = date.getMinutes() + "",
           s = date.getSeconds();
-        return Y + M + D; // + h + m + s;
+        return Y + M + D + h + m + s;
       }
 
       function checkExecutionResult() {
         $.ajax({
           url: "http://44.205.252.41/schull/api/get_image",
-          timeout: 8000,
+          timeout: 10000,
           type: "GET",
           data: {
             repo: currentDirectory,
