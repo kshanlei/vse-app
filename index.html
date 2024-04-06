@@ -449,16 +449,19 @@
         document.getElementById("left-image").src = leftSrcString;
         document.getElementById("right-image").src = rightSrcString;
         //change the image label
-        document.getElementById("left-image-description").innerHTML = "Initial";
-        document.getElementById("right-image-description").innerHTML = "VSE";
+        setTimeout(() => {
+          document.getElementById("left-image-description").innerHTML =
+            "Initial";
+          document.getElementById("right-image-description").innerHTML = "VSE";
 
-        document.getElementById("submit").disabled = false;
-        document.getElementById("submit").classList.remove("button-disabled");
+          document.getElementById("submit").disabled = false;
+          document.getElementById("submit").classList.remove("button-disabled");
 
-        document.getElementById("left-image").style.opacity = "1";
-        document.getElementById("right-image").style.opacity = "1";
-        document.getElementById("left-loading").style.visibility = "hidden";
-        document.getElementById("right-loading").style.visibility = "hidden";
+          document.getElementById("left-image").style.opacity = "1";
+          document.getElementById("right-image").style.opacity = "1";
+          document.getElementById("left-loading").style.visibility = "hidden";
+          document.getElementById("right-loading").style.visibility = "hidden";
+        }, 1000);
       }
 
       function showButtons(obj) {
@@ -490,7 +493,7 @@
           h = date.getHours() + "",
           m = date.getMinutes() + "",
           s = date.getSeconds();
-        return Y + M + D; // + h + m + s;
+        return Y + M + D + h + m + s;
       }
 
       function checkExecutionResult() {
@@ -504,7 +507,16 @@
           },
 
           success: function (data) {
-            const dictionary = JSON.parse(data);
+            var dictionary = "";
+            try {
+              dictionary = JSON.parse(data);
+            } catch (error) {
+              alert(error);
+              clearInterval(timer);
+              count = 0;
+              window.location.reload();
+            }
+
             if (
               dictionary.status == "SUCCESS" &&
               dictionary.message == "Finished"
