@@ -412,7 +412,7 @@
 
       function changeImage(repo, imageId, obj) {
         var srcString =
-          "https://schull.s58.hkustvis.org/schull/api/get_image?repo=" +
+          "https://3.90.225.3/schull/api/get_image?repo=" +
           currentDirectory +
           "&name=" +
           repo +
@@ -438,11 +438,11 @@
 
       function refreshAllImage() {
         var leftSrcString =
-          "https://schull.s58.hkustvis.org/schull/api/get_image?repo=" +
+          "https://3.90.225.3/schull/api/get_image?repo=" +
           currentDirectory +
           "&name=initial.png";
         var rightSrcString =
-          "https://schull.s58.hkustvis.org/schull/api/get_image?repo=" +
+          "https://3.90.225.3/schull/api/get_image?repo=" +
           currentDirectory +
           "&name=vse.png";
 
@@ -498,7 +498,7 @@
 
       function checkExecutionResult() {
         $.ajax({
-          url: "https://schull.s58.hkustvis.org/schull/api/get_image",
+          url: "https://3.90.225.3/schull/api/get_image",
           timeout: 10000,
           type: "GET",
           data: {
@@ -554,7 +554,7 @@
         $.ajax({
           type: "POST",
           dataType: "json",
-          url: "https://schull.s58.hkustvis.org/schull/query",
+          url: "https://3.90.225.3/schull/query",
           contentType: "application/json",
           data: JSON.stringify({
             datum: datum,
